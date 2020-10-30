@@ -98,7 +98,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 def train_decisiontree(X_train, X_test, y_train, y_test):
 
-    clf = DecisionTreeClassifier()
+    clf = DecisionTreeClassifier(criterion='gini', splitter='best', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, class_weight=None, ccp_alpha=0.0)
     clf.fit(X_train, y_train)
 
     test_pred = clf.predict(X_test)
@@ -151,7 +151,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 def train_randomforest(X_train, X_test, y_train, y_test):
 
-    clf = RandomForestClassifier()
+    clf = RandomForestClassifier(n_estimators=100, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=None, random_state=None, verbose=0, warm_start=False, class_weight=None, ccp_alpha=0.0, max_samples=None)
     clf.fit(X_train, y_train)
 
     test_pred = clf.predict(X_test)
@@ -308,7 +308,7 @@ def plot_confusion_matrix(clf, X, y):
 
 def get_accuracy(clf, X, y):
     accuracy = clf.score(X, y)
-    print(accuracy)
+    #print(accuracy)
     return accuracy
 
 def get_bug_classification_accuracy(clf, X, y):
